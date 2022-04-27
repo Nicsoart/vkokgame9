@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Tower Stacker</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build7.json", {onProgress: UnityProgress});
+    </script>
+
+    <script type = "text/javascript" language = "javascript">
+    var fullscreenID;
+    var mobilefullscreenID;
+    var horizontalbannerID;
+    var mobilebannerID;
+    var rewardvideoID;
+    var mobilerewardvideoID;
+
+    var VKfullscreenID = 'R-A-1343857-1';
+    var VKmobilefullscreenID = 'R-A-1343857-4';
+    var VKhorizontalbannerID = 'R-A-1343857-2';
+    var VKmobilebannerID = 'R-A-1343857-6';
+    var VKrewardvideoID = 'R-A-1343857-3';
+    var VKmobilerewardvideoID = 'R-A-1343857-5';
+
+    var OKfullscreenID = 'R-A-1462161-1';
+    var OKmobilefullscreenID = 'R-A-1462161-4';
+    var OKhorizontalbannerID = 'R-A-1462161-2';
+    var OKmobilebannerID = 'R-A-1462161-6';
+    var OKrewardvideoID = 'R-A-1462161-3';
+    var OKmobilerewardvideoID = 'R-A-1462161-5';
+
+    var text;
+    var link;
+    </script>
+
+    <!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+    <!-- VK.API -->
+    <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+    <!-- VK.bridge -->
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <!-- OK -->
+    <script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
+
+  </head>
+  <body>
+    <div class="webgl-content">
+
+    <div id="unityContainer" style="position:relative; width: 100vw; height: 100vh"></div>
+
+    <!-- VK Full Screen -->
+    <div id="yandex_rtb_R-A-1343857-1" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    <!-- VK Mobile Full Screen -->
+    <div id="yandex_rtb_R-A-1343857-4" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    <!-- VK Horizontal Banner -->
+    <div id="yandex_rtb_R-A-1343857-2" style="position: absolute; bottom: 0; width: 100vw; height: 10vh; display: none"></div>
+
+    <!-- VK Mobile Banner -->
+    <div id="yandex_rtb_R-A-1343857-6" style="position: absolute;  bottom: 0; width: 100vw; height: 10vh; display: none"></div>
+
+    <!-- VK Reward Video -->
+    <div id="yandex_rtb_R-A-1343857-3" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    <!-- VK Mobile Reward Video -->
+    <div id="yandex_rtb_R-A-1343857-5" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+
+    <!-- OK Full Screen -->
+    <div id="yandex_rtb_R-A-1462161-1" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    <!-- OK Mobile Full Screen -->
+    <div id="yandex_rtb_R-A-1462161-4" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    <!-- OK Horizontal Banner -->
+    <div id="yandex_rtb_R-A-1462161-2" style="position: absolute; bottom: 0;  width: 100vw; height: 10vh; display: none"></div>
+
+    <!-- OK Mobile Banner -->
+    <div id="yandex_rtb_R-A-1462161-6" style="position: absolute;  bottom: 0; width: 100vw; height: 10vh; display: none"></div>
+
+    <!-- OK Reward Video -->
+    <div id="yandex_rtb_R-A-1462161-3" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    <!-- OK Mobile Reward Video -->
+    <div id="yandex_rtb_R-A-1462161-5" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
+
+    </div>
+
+    <script type = "text/javascript" language = "javascript">
+
+// Initialization
+    function VerticalInitialization() {
+      unityInstance.SendMessage('AdsManager', 'VerticalInitialization', 1);
+    }
+
+    function VKAdsInitialization() {
+      fullscreenID = VKfullscreenID;
+      mobilefullscreenID = VKmobilefullscreenID;
+      horizontalbannerID = VKhorizontalbannerID;
+      mobilebannerID = VKmobilebannerID;
+      rewardvideoID = VKrewardvideoID;
+    }
+
+    function OKAdsInitialization() {
+      fullscreenID = OKfullscreenID;
+      mobilefullscreenID = OKmobilefullscreenID;
+      horizontalbannerID = OKhorizontalbannerID;
+      mobilebannerID = OKmobilebannerID;
+      rewardvideoID = OKrewardvideoID;
+    }
+
+    function PlatformInitialization() {
+      try {
+        var rParams = FAPI.Util.getRequestParameters();
+        if (rParams.api_server !== "undefined" && rParams.api_server == "https://api.ok.ru/") {
+          unityInstance.SendMessage('VKMechanicsController', 'OKInitialization');
+          OKAdsInitialization();
+        } else {
+          unityInstance.SendMessage('VKMechanicsController', 'VKInitialization');
+          VKAdsInitialization();
+        }
+      } catch (e) {
+        unityInstance.SendMessage('VKMechanicsController', 'VKInitialization');
+        VKAdsInitialization();
+      }
+    }
+
+// OK
+  function API_callback(method, result, data) {
+    if (method === "showAd") {
+      unityInstance.SendMessage('AdsManager', 'CloseLoading');
+      if (data === "ad_shown") {
+        unityInstance.SendMessage('AdsManager', 'AdShowed');
+      } else if (data === "no_ads" || data === "call_limit") {
+        unityInstance.SendMessage('AdsManager', 'TryToLoadFullScreen');
+      }
+
+    } else if (method === "loadAd") {
+      if (data === "ready") {
+        FAPI.UI.showLoadedAd();
+      } else if (data === "empty" || data === "call_limit" || data === "disabled" || data === "no_ads") {
+        unityInstance.SendMessage('AdsManager', 'CloseLoading');
+        unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+      }
+
+    } else if (method === "showLoadedAd") {
+      unityInstance.SendMessage('AdsManager', 'CloseLoading');
+      if (data === "complete") {
+        unityInstance.SendMessage('AdsManager', 'GetReward');
+      } else if (data === "not_prepared" || data === "mp4_not_supported") {
+        unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+      }
+    }
+  }
+
+  function OKInitialization() {
+    var rParams = FAPI.Util.getRequestParameters();
+    FAPI.init(rParams.api_server, rParams.apiconnection,
+      function() {
+        var geo_location = rParams.ip_geo_location.split(",");
+        var language = geo_location[0];
+        console.log(language);
+        unityInstance.SendMessage('PlayerManager', 'GetPlayerLanguage', language);
+        unityInstance.SendMessage('PlayerManager', 'GetPlayerName', rParams.user_name);
+        unityInstance.SendMessage('PlayerManager', 'PlayerAuthorized');
+      },
+      function(error) {
+      }
+    )
+  }
+
+    function ShowOKInterstational() {
+      unityInstance.SendMessage('AdsManager', 'OpenLoading');
+      FAPI.UI.showAd();
+    }
+
+    function ShowOKRewardVideo() {
+      unityInstance.SendMessage('AdsManager', 'OpenLoading');
+      FAPI.UI.loadAd();
+    }
+
+    function OKInvite(text, link) {
+      FAPI.UI.showInvite(text + "\n" + link);
+    }
+
+    function OKPublish(text, link) {
+      var attachment = {"media" : [
+        {"type": "text", "text": text},
+        {"type": "link", "url": link}
+      ]};
+      FAPI.UI.postMediatopic(attachment);
+    }
+
+    // VK
+    function VKInitialization() {
+      VK.init(function() {
+      }, function() {
+        VKInitialization();
+      }, '5.131');
+      VKMobileInitialization();
+    }
+
+    function VKMobileInitialization()
+    {
+      vkBridge.send('VKWebAppInit').then(res => {
+        vkBridge.send("VKWebAppGetLaunchParams").then(res => {
+          unityInstance.SendMessage('PlayerManager', 'GetPlayerLanguage', res.vk_language);
+          if (res.vk_is_favorite === 1) {
+            unityInstance.SendMessage('VKMechanicsController', 'InFavorite');
+          }
+        });
+
+        vkBridge.send("VKWebAppGetUserInfo").then(res => {
+          let userName = res.first_name + " " + res.last_name;
+          let userPhoto = res.photo_200;
+          unityInstance.SendMessage('PlayerManager', 'GetPlayerName', userName);
+          unityInstance.SendMessage('PlayerManager', 'GetPlayerPhoto', userPhoto);
+          unityInstance.SendMessage('PlayerManager', 'PlayerAuthorized');
+        });
+
+        vkBridge.send("VKWebAppAddToHomeScreenInfo").then(res => {
+          if (res.is_feature_supported === false) {
+            unityInstance.SendMessage('VKMechanicsController', 'Added');
+          } else {
+            if (res.is_added_to_home_screen === true) {
+              unityInstance.SendMessage('VKMechanicsController', 'Added');
+            }
+          }
+        })
+      })
+    }
+
+    function ShowVKInterstational() {
+      unityInstance.SendMessage('AdsManager', 'OpenLoading');
+      vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
+      .then(data =>{
+        unityInstance.SendMessage('AdsManager', 'CloseLoading');
+        unityInstance.SendMessage('AdsManager', 'AdShowed');
+      })
+      .catch(error =>{
+        unityInstance.SendMessage('AdsManager', 'CloseLoading');
+        unityInstance.SendMessage('AdsManager', 'TryToLoadFullScreen');
+      });
+    }
+
+    function ShowVKRewardVideo() {
+      unityInstance.SendMessage('AdsManager', 'OpenLoading');
+      vkBridge.send("VKWebAppShowNativeAds", {ad_format:"reward"})
+      .then(data => {
+        unityInstance.SendMessage('AdsManager', 'CloseLoading');
+        unityInstance.SendMessage('AdsManager', 'GetReward');
+      })
+      .catch(error => {
+        unityInstance.SendMessage('AdsManager', 'CloseLoading');
+        unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+      });
+    }
+
+    function VKInvite() {
+      vkBridge.send("VKWebAppShowInviteBox").catch(err => {
+        VK.callMethod("showInviteBox");
+      })
+    }
+
+    function VKMobileInvite() {
+      vkBridge.send("VKWebAppShowInviteBox");
+    }
+
+    function VKPublish(text, link) {
+      vkBridge.send("VKWebAppShowWallPostBox", {
+        "message": text,
+        "attachments": link
+      }).catch(err => {
+        if (err.error_type !== "client_error") {
+          VK.api("wall.post", {"message": text, "attachments" : link, "v":"5.73"}, function (data) {
+          })
+        }
+      })
+    }
+
+    function VKMobilePublish(text, link) {
+      vkBridge.send("VKWebAppShowWallPostBox", {
+        "message": text,
+        "attachments": link
+      })
+    }
+
+    function VKAddInMenu() {
+      VK.callMethod("showSettingsBox", 256);
+    }
+
+    function VKAddToHomeScreen() {
+      vkBridge.send("VKWebAppAddToHomeScreen").then(res => {
+        if (res.is_added_to_home_screen === true) {
+          unityInstance.SendMessage('VKMechanicsController', 'Added');
+        }
+      })
+    }
+
+    function VKFavorite() {
+      vkBridge.send("VKWebAppAddToFavorites").then(res => {
+        if (res.result == true) {
+          unityInstance.SendMessage('VKMechanicsController', 'InFavorite');
+        }
+      })
+    }
+
+// Full Screen
+    function ShowFullScreen() {
+      document.getElementById('yandex_rtb_' + fullscreenID).style.display = 'block';
+      Ya.Context.AdvManager.render({
+        renderTo: 'yandex_rtb_' + fullscreenID,
+        blockId: fullscreenID,
+        onError: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CloseFullScreen');
+        },
+        onRender: (data) => {
+          unityInstance.SendMessage('AdsManager', 'FullScreenLoaded');
+        }
+      })
+    }
+
+    function ShowMobileFullScreen() {
+      document.getElementById('yandex_rtb_' + mobilefullscreenID).style.display = 'block';
+      Ya.Context.AdvManager.render({
+        renderTo: 'yandex_rtb_' + mobilefullscreenID,
+        blockId: mobilefullscreenID,
+        onError: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CloseFullScreen');
+        },
+        onRender: (data) => {
+          unityInstance.SendMessage('AdsManager', 'FullScreenLoaded');
+        }
+      })
+    }
+
+    function CloseFullScreen() {
+      document.getElementById('yandex_rtb_' + fullscreenID).style.display = 'none';
+    }
+
+    function CloseMobileFullScreen() {
+      document.getElementById('yandex_rtb_' + mobilefullscreenID).style.display = 'none';
+    }
+
+// Banner
+    function ShowBanner() {
+      document.getElementById('yandex_rtb_' + horizontalbannerID).style.display = 'block';
+      Ya.Context.AdvManager.render({
+        renderTo: 'yandex_rtb_' + horizontalbannerID,
+        blockId: horizontalbannerID,
+        onError: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CloseBanner');
+        }
+      })
+    }
+
+    function ShowMobileBanner() {
+      document.getElementById('yandex_rtb_' + mobilebannerID).style.display = 'block';
+      Ya.Context.AdvManager.render({
+        renderTo: 'yandex_rtb_' + mobilebannerID,
+        blockId: mobilebannerID,
+        onError: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CloseBanner');
+        }
+      })
+    }
+
+    function CloseBanner() {
+      document.getElementById('yandex_rtb_' + horizontalbannerID).style.display = 'none';
+    }
+
+    function CloseMobileBanner() {
+      document.getElementById('yandex_rtb_' + mobilebannerID).style.display = 'none';
+    }
+
+// Custon Reward Video
+    function ShowCustomRewardVideo() {
+      document.getElementById('yandex_rtb_' + rewardvideoID).style.display = 'block';
+      Ya.Context.AdvManager.render({
+        renderTo: 'yandex_rtb_' + rewardvideoID,
+        blockId: rewardvideoID,
+        onError: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CloseCustomRewardVideo');
+        },
+        onRender: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CustomRewardVideoLoaded');
+        }
+      })
+    }
+
+    function CloseCustomRewardVideo() {
+      document.getElementById('yandex_rtb_' + rewardvideoID).style.display = 'none';
+    }
+
+    function ShowMobileCustomRewardVideo() {
+      document.getElementById('yandex_rtb_' + rewardvideoID).style.display = 'block';
+      Ya.Context.AdvManager.render({
+        renderTo: 'yandex_rtb_' + rewardvideoID,
+        blockId: rewardvideoID,
+        onError: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CloseCustomRewardVideo');
+        },
+        onRender: (data) => {
+          unityInstance.SendMessage('AdsManager', 'CustomRewardVideoLoaded');
+        }
+      })
+    }
+
+    function CloseMobileCustomRewardVideo() {
+      document.getElementById('yandex_rtb_' + rewardvideoID).style.display = 'none';
+    }
+  </script>
+  </body>
+</html>
