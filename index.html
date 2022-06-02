@@ -37,6 +37,7 @@
 
     var text;
     var link;
+    var adCounter = 0;
     </script>
 
     <!-- Yandex.RTB -->
@@ -140,7 +141,7 @@
       if (data === "ad_shown") {
         unityInstance.SendMessage('AdsManager', 'AdShowed');
       } else if (data === "no_ads" || data === "call_limit") {
-        unityInstance.SendMessage('AdsManager', 'TryToLoadFullScreen');
+        //unityInstance.SendMessage('AdsManager', 'TryToLoadFullScreen');
       }
 
     } else if (method === "loadAd") {
@@ -148,7 +149,7 @@
         FAPI.UI.showLoadedAd();
       } else if (data === "empty" || data === "call_limit" || data === "disabled" || data === "no_ads") {
         unityInstance.SendMessage('AdsManager', 'CloseLoading');
-        unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+        //unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
       }
 
     } else if (method === "showLoadedAd") {
@@ -156,7 +157,7 @@
       if (data === "complete") {
         unityInstance.SendMessage('AdsManager', 'GetReward');
       } else if (data === "not_prepared" || data === "mp4_not_supported") {
-        unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+        //unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
       }
     }
     else if (method === "joinGroup") {
@@ -185,8 +186,13 @@
   }
 
     function ShowOKInterstational() {
-      unityInstance.SendMessage('AdsManager', 'OpenLoading');
-      FAPI.UI.showAd();
+      if (adCounter > 3)
+      {
+        unityInstance.SendMessage('AdsManager', 'OpenLoading');
+        FAPI.UI.showAd();
+      } else {
+        adCounter++;
+      }
     }
 
     function ShowOKRewardVideo() {
