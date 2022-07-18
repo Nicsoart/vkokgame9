@@ -158,6 +158,8 @@
         unityInstance.SendMessage('AdsManager', 'GetReward');
       } else if (data === "not_prepared" || data === "mp4_not_supported") {
         //unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+        FAPI.UI.showAd();
+        unityInstance.SendMessage('AdsManager', 'GetReward');
       }
     }
     else if (method === "joinGroup") {
