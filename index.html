@@ -150,6 +150,8 @@
       } else if (data === "empty" || data === "call_limit" || data === "disabled" || data === "no_ads") {
         unityInstance.SendMessage('AdsManager', 'CloseLoading');
         //unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
+        FAPI.UI.showAd();
+        unityInstance.SendMessage('AdsManager', 'GetReward');
       }
 
     } else if (method === "showLoadedAd") {
